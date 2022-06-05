@@ -1,0 +1,40 @@
+﻿@model IEnumerable<UsingDapper.Models.ClienteModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Clientes </h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id Cliente</th>
+            <th>N° Documento</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Observación</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdCliente</td>
+                <td>@item.NroDocumento</td>
+                <td>@item.Nombre</td>
+                <td>@item.Direccion</td>
+                <td>@item.Telefono</td>
+                <td>@item.Observacion</td>
+                <td>
+                    @Html.ActionLink("Editar", "EditarCliente", new { id = item.IdCliente }, new { @class = "btn btn-default" } )
+                    @Html.ActionLink("Eliminar", "EliminarCliente", new { id = item.IdCliente }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-default">
+    
+    @Html.ActionLink("Nuevo Cliente", "CrearCliente", new { @class = "btn btn-default" })
+</button>
